@@ -641,8 +641,26 @@
             }
         }
 
-        orderBtn.addEventListener('click', () => {
+        orderBtn.addEventListener('click', async () => {
             if (selectedItems.length === 0) return;
+
+            // Send order to Formspree
+            try {
+                await fetch('https://formspree.io/f/mbdowyen', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        order: selectedItems.join(', '),
+                        notes: notes.value.trim() || '(none)',
+                        _subject: '🦕 小恐龍廚房 - 新訂單!'
+                    })
+                });
+            } catch (error) {
+                console.error('Failed to send order:', error);
+            }
 
             let summaryHTML = selectedItems.map(item =>
                 `<div class="order-summary-item">🌿 ${item}</div>`
