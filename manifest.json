@@ -1,0 +1,17 @@
+{
+  "name": "小恐龍廚房",
+  "short_name": "小恐龍",
+  "description": "Order food from your favorite little dinosaur chef",
+  "start_url": "/baomenu/",
+  "display": "standalone",
+  "background_color": "#3d4a3d",
+  "theme_color": "#3d4a3d",
+  "icons": [
+    {
+      "src": "chef.png",
+      "sizes": "256x256",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
