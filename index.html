@@ -42,7 +42,6 @@
             box-shadow: 0 25px 80px rgba(0,0,0,0.4);
         }
 
-        /* Decorative border */
         .menu::before {
             content: '';
             position: absolute;
@@ -65,7 +64,6 @@
             pointer-events: none;
         }
 
-        /* Corner dinos */
         .corner {
             position: absolute;
             font-size: 14px;
@@ -251,7 +249,7 @@
             font-style: italic;
         }
 
-        .order-btn {
+        .btn {
             width: 100%;
             padding: 16px;
             background: #4a5c4a;
@@ -262,18 +260,29 @@
             letter-spacing: 4px;
             cursor: pointer;
             transition: all 0.3s ease;
-            margin-top: 25px;
+            margin-top: 15px;
             border-radius: 4px;
         }
 
-        .order-btn:hover:not(:disabled) {
+        .btn:hover:not(:disabled) {
             background: #7db87d;
             color: #2f3a2f;
         }
 
-        .order-btn:disabled {
+        .btn:disabled {
             background: #b8ccb8;
             cursor: not-allowed;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 1px solid #7db87d;
+            color: #4a5c4a;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(125, 184, 125, 0.1);
+            color: #4a5c4a;
         }
 
         footer {
@@ -298,6 +307,193 @@
         @keyframes bounce {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-3px); }
+        }
+
+        /* Screens */
+        .screen {
+            display: none;
+        }
+
+        .screen.active {
+            display: block;
+        }
+
+        /* Role Selection */
+        .role-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .role-btn {
+            padding: 25px;
+            border: 2px solid #7db87d;
+            background: transparent;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+        }
+
+        .role-btn:hover {
+            background: rgba(125, 184, 125, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .role-btn-icon {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .role-btn-title {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 18px;
+            color: #4a5c4a;
+            margin-bottom: 5px;
+        }
+
+        .role-btn-desc {
+            font-size: 12px;
+            color: #8fb88f;
+        }
+
+        /* Login */
+        .login-section {
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .login-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 28px;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: 'Noto Serif TC', serif;
+            font-size: 14px;
+            color: #333;
+            transition: all 0.3s;
+        }
+
+        .login-btn:hover {
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .login-btn img {
+            width: 20px;
+            height: 20px;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            padding: 10px;
+            background: rgba(125, 184, 125, 0.1);
+            border-radius: 4px;
+        }
+
+        .user-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+        }
+
+        .user-name {
+            font-size: 14px;
+            color: #4a5c4a;
+        }
+
+        /* Chef Orders */
+        .orders-list {
+            margin-top: 20px;
+        }
+
+        .order-card {
+            background: rgba(255,255,255,0.5);
+            border: 1px solid rgba(125, 184, 125, 0.2);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 15px;
+        }
+
+        .order-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            padding-bottom: 12px;
+            border-bottom: 1px dotted #c8dcc8;
+        }
+
+        .order-from {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 14px;
+            color: #4a5c4a;
+        }
+
+        .order-time {
+            font-size: 12px;
+            color: #8fb88f;
+        }
+
+        .order-items {
+            margin-bottom: 10px;
+        }
+
+        .order-item {
+            padding: 4px 0;
+            color: #4a5c4a;
+            font-size: 14px;
+        }
+
+        .order-notes {
+            font-size: 13px;
+            color: #8fb88f;
+            font-style: italic;
+            padding-top: 10px;
+            border-top: 1px dotted #c8dcc8;
+        }
+
+        .no-orders {
+            text-align: center;
+            padding: 40px 20px;
+            color: #8fb88f;
+        }
+
+        .no-orders-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .order-status {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            letter-spacing: 1px;
+        }
+
+        .order-status.pending {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .order-status.completed {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .complete-btn {
+            padding: 8px 16px;
+            font-size: 12px;
+            margin-top: 10px;
         }
 
         /* Modal */
@@ -416,7 +612,7 @@
             color: #2f3a2f;
         }
 
-        /* Floating dinos animation */
+        /* Floating hearts */
         .dinos-container {
             position: fixed;
             top: 0;
@@ -468,131 +664,275 @@
         <span class="corner corner-bl">🌿</span>
         <span class="corner corner-br">🌿</span>
 
-        <header>
-            <div class="ornament">🦕 ✦ 🦖</div>
-            <h1>小恐龍廚房</h1>
-            <p class="subtitle">今天想吃什麼呢？</p>
-        </header>
+        <!-- Screen 1: Role Selection -->
+        <div id="roleScreen" class="screen active">
+            <header>
+                <div class="ornament">🦕 ✦ 🦖</div>
+                <h1>小恐龍廚房</h1>
+                <p class="subtitle">歡迎光臨</p>
+            </header>
 
-        <div class="divider">
-            <span class="divider-line"></span>
-            <span class="divider-icon">❀</span>
-            <span class="divider-line"></span>
+            <div class="divider">
+                <span class="divider-line"></span>
+                <span class="divider-icon">❀</span>
+                <span class="divider-line"></span>
+            </div>
+
+            <div class="section-title">— 請選擇身份 —</div>
+
+            <div class="role-buttons">
+                <button class="role-btn" onclick="selectRole('customer')">
+                    <div class="role-btn-icon">🍽️</div>
+                    <div class="role-btn-title">我要點餐</div>
+                    <div class="role-btn-desc">Customer - Order food</div>
+                </button>
+
+                <button class="role-btn" onclick="selectRole('chef')">
+                    <div class="role-btn-icon">👨‍🍳</div>
+                    <div class="role-btn-title">我是廚師</div>
+                    <div class="role-btn-desc">Chef - View orders</div>
+                </button>
+            </div>
+
+            <footer>
+                <p class="footer-text">用滿滿的愛為你準備 <span class="footer-dino">🦖</span></p>
+            </footer>
         </div>
 
-        <div class="section-title">— Pasta · 義大利麵 —</div>
+        <!-- Screen 2: Login -->
+        <div id="loginScreen" class="screen">
+            <header>
+                <div class="ornament">🦕 ✦ 🦖</div>
+                <h1>小恐龍廚房</h1>
+                <p class="subtitle" id="loginSubtitle">登入</p>
+            </header>
 
-        <div class="menu-items">
-            <div class="menu-item" data-item="青醬義大利麵">
-                <span class="item-number">01</span>
-                <div class="item-content">
-                    <div class="item-header">
-                        <span class="item-name">青醬義大利麵</span>
-                        <span class="item-dots"></span>
-                    </div>
-                    <div class="item-english">Pesto Pasta</div>
-                </div>
-                <span class="check-mark">🦕</span>
+            <div class="divider">
+                <span class="divider-line"></span>
+                <span class="divider-icon">❀</span>
+                <span class="divider-line"></span>
             </div>
 
-            <div class="menu-item" data-item="蘑菇肉醬義大利麵">
-                <span class="item-number">02</span>
-                <div class="item-content">
-                    <div class="item-header">
-                        <span class="item-name">蘑菇肉醬義大利麵</span>
-                        <span class="item-dots"></span>
-                    </div>
-                    <div class="item-english">Mushroom Bolognese</div>
-                </div>
-                <span class="check-mark">🦕</span>
+            <div class="login-section">
+                <p style="color: #8fb88f; margin-bottom: 20px;">請先登入以繼續</p>
+                <button class="login-btn" onclick="signInWithGoogle()">
+                    <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google">
+                    使用 Google 登入
+                </button>
             </div>
+
+            <button class="btn btn-secondary" onclick="goBack()" style="margin-top: 30px;">
+                ← 返回
+            </button>
+
+            <footer>
+                <p class="footer-text">用滿滿的愛為你準備 <span class="footer-dino">🦖</span></p>
+            </footer>
         </div>
 
-        <div class="section-title">— Rice · 飯類 —</div>
+        <!-- Screen 3: Customer Menu -->
+        <div id="customerScreen" class="screen">
+            <header>
+                <div class="ornament">🦕 ✦ 🦖</div>
+                <h1>小恐龍廚房</h1>
+                <p class="subtitle">今天想吃什麼呢？</p>
+            </header>
 
-        <div class="menu-items">
-            <div class="menu-item" data-item="麻油雞悶飯">
-                <span class="item-number">03</span>
-                <div class="item-content">
-                    <div class="item-header">
-                        <span class="item-name">麻油雞悶飯</span>
-                        <span class="item-dots"></span>
-                    </div>
-                    <div class="item-english">Sesame Oil Chicken Rice</div>
-                </div>
-                <span class="check-mark">🦕</span>
+            <div class="user-info" id="customerUserInfo"></div>
+
+            <div class="divider">
+                <span class="divider-line"></span>
+                <span class="divider-icon">❀</span>
+                <span class="divider-line"></span>
             </div>
 
-            <div class="menu-item" data-item="焗烤白魚飯">
-                <span class="item-number">04</span>
-                <div class="item-content">
-                    <div class="item-header">
-                        <span class="item-name">焗烤白魚飯</span>
-                        <span class="item-dots"></span>
+            <div class="section-title">— Pasta · 義大利麵 —</div>
+
+            <div class="menu-items">
+                <div class="menu-item" data-item="青醬義大利麵">
+                    <span class="item-number">01</span>
+                    <div class="item-content">
+                        <div class="item-header">
+                            <span class="item-name">青醬義大利麵</span>
+                            <span class="item-dots"></span>
+                        </div>
+                        <div class="item-english">Pesto Pasta</div>
                     </div>
-                    <div class="item-english">Baked White Fish with Rice</div>
+                    <span class="check-mark">🦕</span>
                 </div>
-                <span class="check-mark">🦕</span>
+
+                <div class="menu-item" data-item="蘑菇肉醬義大利麵">
+                    <span class="item-number">02</span>
+                    <div class="item-content">
+                        <div class="item-header">
+                            <span class="item-name">蘑菇肉醬義大利麵</span>
+                            <span class="item-dots"></span>
+                        </div>
+                        <div class="item-english">Mushroom Bolognese</div>
+                    </div>
+                    <span class="check-mark">🦕</span>
+                </div>
             </div>
 
-            <div class="menu-item" data-item="焗烤雞肉飯">
-                <span class="item-number">05</span>
-                <div class="item-content">
-                    <div class="item-header">
-                        <span class="item-name">焗烤雞肉飯</span>
-                        <span class="item-dots"></span>
+            <div class="section-title">— Rice · 飯類 —</div>
+
+            <div class="menu-items">
+                <div class="menu-item" data-item="麻油雞悶飯">
+                    <span class="item-number">03</span>
+                    <div class="item-content">
+                        <div class="item-header">
+                            <span class="item-name">麻油雞悶飯</span>
+                            <span class="item-dots"></span>
+                        </div>
+                        <div class="item-english">Sesame Oil Chicken Rice</div>
                     </div>
-                    <div class="item-english">Baked Chicken Rice au Gratin</div>
+                    <span class="check-mark">🦕</span>
                 </div>
-                <span class="check-mark">🦕</span>
+
+                <div class="menu-item" data-item="焗烤白魚飯">
+                    <span class="item-number">04</span>
+                    <div class="item-content">
+                        <div class="item-header">
+                            <span class="item-name">焗烤白魚飯</span>
+                            <span class="item-dots"></span>
+                        </div>
+                        <div class="item-english">Baked White Fish with Rice</div>
+                    </div>
+                    <span class="check-mark">🦕</span>
+                </div>
+
+                <div class="menu-item" data-item="焗烤雞肉飯">
+                    <span class="item-number">05</span>
+                    <div class="item-content">
+                        <div class="item-header">
+                            <span class="item-name">焗烤雞肉飯</span>
+                            <span class="item-dots"></span>
+                        </div>
+                        <div class="item-english">Baked Chicken Rice au Gratin</div>
+                    </div>
+                    <span class="check-mark">🦕</span>
+                </div>
             </div>
+
+            <div class="section-title">— Seafood · 海鮮 —</div>
+
+            <div class="menu-items">
+                <div class="menu-item" data-item="炙烤三文魚">
+                    <span class="item-number">06</span>
+                    <div class="item-content">
+                        <div class="item-header">
+                            <span class="item-name">炙烤三文魚</span>
+                            <span class="item-dots"></span>
+                        </div>
+                        <div class="item-english">Seared Salmon</div>
+                    </div>
+                    <span class="check-mark">🦕</span>
+                </div>
+            </div>
+
+            <div class="notes-section">
+                <label>Special Requests · 備註</label>
+                <textarea id="notes" rows="2" placeholder="有什麼特別的要求嗎？"></textarea>
+            </div>
+
+            <button class="btn" id="orderBtn" disabled>
+                請選擇餐點
+            </button>
+
+            <button class="btn btn-secondary" onclick="signOut()">
+                登出
+            </button>
+
+            <footer>
+                <p class="footer-text">用滿滿的愛為你準備 <span class="footer-dino">🦖</span></p>
+            </footer>
         </div>
 
-        <div class="section-title">— Seafood · 海鮮 —</div>
+        <!-- Screen 4: Chef Orders -->
+        <div id="chefScreen" class="screen">
+            <header>
+                <div class="ornament">🦕 ✦ 🦖</div>
+                <h1>小恐龍廚房</h1>
+                <p class="subtitle">訂單管理</p>
+            </header>
 
-        <div class="menu-items">
-            <div class="menu-item" data-item="炙烤三文魚">
-                <span class="item-number">06</span>
-                <div class="item-content">
-                    <div class="item-header">
-                        <span class="item-name">炙烤三文魚</span>
-                        <span class="item-dots"></span>
-                    </div>
-                    <div class="item-english">Seared Salmon</div>
-                </div>
-                <span class="check-mark">🦕</span>
+            <div class="user-info" id="chefUserInfo"></div>
+
+            <div class="divider">
+                <span class="divider-line"></span>
+                <span class="divider-icon">❀</span>
+                <span class="divider-line"></span>
             </div>
+
+            <div class="section-title">— 待處理訂單 —</div>
+
+            <div class="orders-list" id="ordersList">
+                <div class="no-orders">
+                    <div class="no-orders-icon">🦕</div>
+                    <p>目前沒有訂單</p>
+                    <p style="font-size: 12px; margin-top: 5px;">等待中...</p>
+                </div>
+            </div>
+
+            <button class="btn btn-secondary" onclick="signOut()">
+                登出
+            </button>
+
+            <footer>
+                <p class="footer-text">用滿滿的愛為你準備 <span class="footer-dino">🦖</span></p>
+            </footer>
         </div>
-
-        <div class="notes-section">
-            <label>Special Requests · 備註</label>
-            <textarea id="notes" rows="2" placeholder="有什麼特別的要求嗎？"></textarea>
-        </div>
-
-        <button class="order-btn" id="orderBtn" disabled>
-            請選擇餐點
-        </button>
-
-        <footer>
-            <p class="footer-text">用滿滿的愛為你準備 <span class="footer-dino">🦖</span></p>
-        </footer>
     </div>
 
     <!-- Confirmation Modal -->
     <div class="modal-overlay" id="modal">
         <div class="modal">
             <div class="modal-icon">🦕</div>
-            <h2>訂單已收到！</h2>
+            <h2>訂單已送出！</h2>
             <div class="order-summary" id="orderSummary"></div>
             <p>小恐龍馬上為你準備～請稍等一下哦</p>
             <button class="modal-btn" id="closeModal">好的，謝謝 🦖</button>
         </div>
     </div>
 
-    <!-- Floating dinos container -->
+    <!-- Floating hearts container -->
     <div class="dinos-container" id="dinosContainer"></div>
 
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+
     <script>
+        // Firebase config
+        const firebaseConfig = {
+            apiKey: "AIzaSyA9woljBSE1pnDvMbAa4q82diz-PC4IJaw",
+            authDomain: "dino-restaurant.firebaseapp.com",
+            projectId: "dino-restaurant",
+            storageBucket: "dino-restaurant.firebasestorage.app",
+            messagingSenderId: "788822847636",
+            appId: "1:788822847636:web:b726d48609be859a6ac481",
+            measurementId: "G-46CMBND5CR"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+
+        // State
+        let currentRole = null;
+        let currentUser = null;
+        let selectedItems = [];
+        let unsubscribeOrders = null;
+
+        // DOM elements
+        const screens = {
+            role: document.getElementById('roleScreen'),
+            login: document.getElementById('loginScreen'),
+            customer: document.getElementById('customerScreen'),
+            chef: document.getElementById('chefScreen')
+        };
         const menuItems = document.querySelectorAll('.menu-item');
         const orderBtn = document.getElementById('orderBtn');
         const modal = document.getElementById('modal');
@@ -600,9 +940,9 @@
         const orderSummary = document.getElementById('orderSummary');
         const notes = document.getElementById('notes');
         const dinosContainer = document.getElementById('dinosContainer');
+        const ordersList = document.getElementById('ordersList');
 
-        let selectedItems = [];
-
+        // Hearts animation
         const hearts = ['💚', '💕', '❤️', '💗', '🤍'];
 
         function createFloatingHeart(x, y) {
@@ -616,6 +956,72 @@
             setTimeout(() => heart.remove(), 4000);
         }
 
+        // Screen management
+        function showScreen(screenName) {
+            Object.values(screens).forEach(s => s.classList.remove('active'));
+            screens[screenName].classList.add('active');
+        }
+
+        function selectRole(role) {
+            currentRole = role;
+            if (currentUser) {
+                showScreen(role === 'customer' ? 'customer' : 'chef');
+                if (role === 'chef') {
+                    listenToOrders();
+                }
+            } else {
+                document.getElementById('loginSubtitle').textContent =
+                    role === 'customer' ? '點餐登入' : '廚師登入';
+                showScreen('login');
+            }
+        }
+
+        function goBack() {
+            currentRole = null;
+            showScreen('role');
+        }
+
+        // Auth
+        function signInWithGoogle() {
+            const provider = new firebase.auth.GoogleAuthProvider();
+            auth.signInWithPopup(provider).catch(error => {
+                console.error('Login error:', error);
+                alert('登入失敗，請再試一次');
+            });
+        }
+
+        function signOut() {
+            if (unsubscribeOrders) {
+                unsubscribeOrders();
+                unsubscribeOrders = null;
+            }
+            auth.signOut();
+            currentRole = null;
+            selectedItems = [];
+            showScreen('role');
+        }
+
+        auth.onAuthStateChanged(user => {
+            currentUser = user;
+            if (user && currentRole) {
+                updateUserInfo();
+                showScreen(currentRole === 'customer' ? 'customer' : 'chef');
+                if (currentRole === 'chef') {
+                    listenToOrders();
+                }
+            }
+        });
+
+        function updateUserInfo() {
+            const html = `
+                <img src="${currentUser.photoURL || 'https://via.placeholder.com/32'}" class="user-avatar" alt="avatar">
+                <span class="user-name">${currentUser.displayName || currentUser.email}</span>
+            `;
+            document.getElementById('customerUserInfo').innerHTML = html;
+            document.getElementById('chefUserInfo').innerHTML = html;
+        }
+
+        // Menu item selection
         menuItems.forEach(item => {
             item.addEventListener('click', (e) => {
                 item.classList.toggle('selected');
@@ -623,7 +1029,6 @@
 
                 if (item.classList.contains('selected')) {
                     selectedItems.push(itemName);
-                    // Create hearts on selection
                     for (let i = 0; i < 3; i++) {
                         setTimeout(() => {
                             createFloatingHeart(
@@ -650,46 +1055,46 @@
             }
         }
 
+        // Submit order
         orderBtn.addEventListener('click', async () => {
-            if (selectedItems.length === 0) return;
+            if (selectedItems.length === 0 || !currentUser) return;
 
-            // Send order to Formspree
             try {
-                await fetch('https://formspree.io/f/mbdowyen', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        order: selectedItems.join(', '),
-                        notes: notes.value.trim() || '(none)',
-                        _subject: '🦕 小恐龍廚房 - 新訂單!'
-                    })
+                // Save to Firebase
+                await db.collection('orders').add({
+                    items: selectedItems,
+                    notes: notes.value.trim() || '',
+                    customerName: currentUser.displayName || currentUser.email,
+                    customerEmail: currentUser.email,
+                    status: 'pending',
+                    createdAt: firebase.firestore.FieldValue.serverTimestamp()
                 });
+
+                // Show confirmation
+                let summaryHTML = selectedItems.map(item =>
+                    `<div class="order-summary-item">🌿 ${item}</div>`
+                ).join('');
+
+                if (notes.value.trim()) {
+                    summaryHTML += `<div class="order-summary-note">« ${notes.value} »</div>`;
+                }
+
+                orderSummary.innerHTML = summaryHTML;
+                modal.classList.add('active');
+
+                // Celebration hearts
+                for (let i = 0; i < 15; i++) {
+                    setTimeout(() => {
+                        createFloatingHeart(
+                            Math.random() * window.innerWidth,
+                            window.innerHeight - 100 + Math.random() * 100
+                        );
+                    }, i * 150);
+                }
+
             } catch (error) {
-                console.error('Failed to send order:', error);
-            }
-
-            let summaryHTML = selectedItems.map(item =>
-                `<div class="order-summary-item">🌿 ${item}</div>`
-            ).join('');
-
-            if (notes.value.trim()) {
-                summaryHTML += `<div class="order-summary-note">« ${notes.value} »</div>`;
-            }
-
-            orderSummary.innerHTML = summaryHTML;
-            modal.classList.add('active');
-
-            // Celebration hearts
-            for (let i = 0; i < 15; i++) {
-                setTimeout(() => {
-                    createFloatingHeart(
-                        Math.random() * window.innerWidth,
-                        window.innerHeight - 100 + Math.random() * 100
-                    );
-                }, i * 150);
+                console.error('Order error:', error);
+                alert('訂單送出失敗，請再試一次');
             }
         });
 
@@ -706,6 +1111,63 @@
                 closeModal.click();
             }
         });
+
+        // Chef: Listen to orders
+        function listenToOrders() {
+            if (unsubscribeOrders) return;
+
+            unsubscribeOrders = db.collection('orders')
+                .orderBy('createdAt', 'desc')
+                .onSnapshot(snapshot => {
+                    renderOrders(snapshot.docs);
+                }, error => {
+                    console.error('Error listening to orders:', error);
+                });
+        }
+
+        function renderOrders(docs) {
+            if (docs.length === 0) {
+                ordersList.innerHTML = `
+                    <div class="no-orders">
+                        <div class="no-orders-icon">🦕</div>
+                        <p>目前沒有訂單</p>
+                        <p style="font-size: 12px; margin-top: 5px;">等待中...</p>
+                    </div>
+                `;
+                return;
+            }
+
+            ordersList.innerHTML = docs.map(doc => {
+                const order = doc.data();
+                const time = order.createdAt ? new Date(order.createdAt.toDate()).toLocaleString('zh-TW') : '剛剛';
+                const isPending = order.status === 'pending';
+
+                return `
+                    <div class="order-card">
+                        <div class="order-header">
+                            <span class="order-from">👤 ${order.customerName || '匿名'}</span>
+                            <span class="order-status ${order.status}">${isPending ? '待處理' : '已完成'}</span>
+                        </div>
+                        <div class="order-time">🕐 ${time}</div>
+                        <div class="order-items">
+                            ${order.items.map(item => `<div class="order-item">🌿 ${item}</div>`).join('')}
+                        </div>
+                        ${order.notes ? `<div class="order-notes">📝 ${order.notes}</div>` : ''}
+                        ${isPending ? `<button class="btn complete-btn" onclick="completeOrder('${doc.id}')">標記完成 ✓</button>` : ''}
+                    </div>
+                `;
+            }).join('');
+        }
+
+        async function completeOrder(orderId) {
+            try {
+                await db.collection('orders').doc(orderId).update({
+                    status: 'completed'
+                });
+            } catch (error) {
+                console.error('Error completing order:', error);
+            }
+        }
     </script>
 </body>
 </html>
