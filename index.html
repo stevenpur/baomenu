@@ -211,6 +211,36 @@
             letter-spacing: 1px;
         }
 
+        .item-ingredients {
+            font-size: 11px;
+            color: #a8cca8;
+            margin-top: 4px;
+        }
+
+        .urgency-badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 10px;
+            margin-left: 8px;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        .urgency-badge.urgent {
+            background: #ffcccc;
+            color: #cc4444;
+        }
+
+        .urgency-badge.soon {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
         .notes-section {
             margin-top: 30px;
             padding-top: 25px;
@@ -283,6 +313,21 @@
         .btn-secondary:hover {
             background: rgba(125, 184, 125, 0.1);
             color: #4a5c4a;
+        }
+
+        .btn-small {
+            padding: 8px 16px;
+            font-size: 12px;
+            width: auto;
+            margin-top: 0;
+        }
+
+        .btn-danger {
+            background: #dc6b6b;
+        }
+
+        .btn-danger:hover {
+            background: #c55555;
         }
 
         footer {
@@ -494,6 +539,127 @@
             padding: 8px 16px;
             font-size: 12px;
             margin-top: 10px;
+        }
+
+        /* Recipe Management */
+        .recipe-card {
+            background: rgba(255,255,255,0.5);
+            border: 1px solid rgba(125, 184, 125, 0.2);
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 12px;
+        }
+
+        .recipe-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .recipe-name {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 16px;
+            color: #4a5c4a;
+            font-weight: 500;
+        }
+
+        .recipe-english {
+            font-size: 12px;
+            color: #8fb88f;
+            font-style: italic;
+        }
+
+        .recipe-ingredients {
+            font-size: 12px;
+            color: #a8cca8;
+            margin-top: 8px;
+        }
+
+        .recipe-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 12px;
+            letter-spacing: 2px;
+            color: #8fb88f;
+            margin-bottom: 8px;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #d8e8d8;
+            border-radius: 4px;
+            font-size: 14px;
+            font-family: 'Noto Serif TC', serif;
+            background: rgba(255,255,255,0.5);
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: #7db87d;
+        }
+
+        /* Ingredient urgency */
+        .ingredient-list {
+            margin-top: 15px;
+        }
+
+        .ingredient-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background: rgba(255,255,255,0.5);
+            border: 1px solid rgba(125, 184, 125, 0.2);
+            border-radius: 4px;
+            margin-bottom: 8px;
+        }
+
+        .ingredient-name {
+            font-size: 14px;
+            color: #4a5c4a;
+        }
+
+        .urgency-buttons {
+            display: flex;
+            gap: 5px;
+        }
+
+        .urgency-btn {
+            padding: 4px 10px;
+            border: none;
+            border-radius: 12px;
+            font-size: 11px;
+            cursor: pointer;
+            transition: all 0.2s;
+            opacity: 0.5;
+        }
+
+        .urgency-btn.active {
+            opacity: 1;
+        }
+
+        .urgency-btn.urgent {
+            background: #ffcccc;
+            color: #cc4444;
+        }
+
+        .urgency-btn.soon {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .urgency-btn.fresh {
+            background: #d4edda;
+            color: #155724;
         }
 
         /* Chat */
@@ -790,6 +956,12 @@
                     <div class="role-btn-title">我是廚師</div>
                     <div class="role-btn-desc">Chef - View orders</div>
                 </button>
+
+                <button class="role-btn" onclick="selectRole('manager')">
+                    <div class="role-btn-icon">📝</div>
+                    <div class="role-btn-title">管理食譜</div>
+                    <div class="role-btn-desc">Manage recipes & ingredients</div>
+                </button>
             </div>
 
             <footer>
@@ -844,87 +1016,12 @@
                 <span class="divider-line"></span>
             </div>
 
-            <div class="section-title">— Pasta · 義大利麵 —</div>
+            <div class="section-title">— 今日菜單 —</div>
 
-            <div class="menu-items">
-                <div class="menu-item" data-item="青醬義大利麵">
-                    <span class="item-number">01</span>
-                    <div class="item-content">
-                        <div class="item-header">
-                            <span class="item-name">青醬義大利麵</span>
-                            <span class="item-dots"></span>
-                        </div>
-                        <div class="item-english">Pesto Pasta</div>
-                    </div>
-                    <span class="check-mark">🦕</span>
-                </div>
-
-                <div class="menu-item" data-item="蘑菇肉醬義大利麵">
-                    <span class="item-number">02</span>
-                    <div class="item-content">
-                        <div class="item-header">
-                            <span class="item-name">蘑菇肉醬義大利麵</span>
-                            <span class="item-dots"></span>
-                        </div>
-                        <div class="item-english">Mushroom Bolognese</div>
-                    </div>
-                    <span class="check-mark">🦕</span>
-                </div>
-            </div>
-
-            <div class="section-title">— Rice · 飯類 —</div>
-
-            <div class="menu-items">
-                <div class="menu-item" data-item="麻油雞悶飯">
-                    <span class="item-number">03</span>
-                    <div class="item-content">
-                        <div class="item-header">
-                            <span class="item-name">麻油雞悶飯</span>
-                            <span class="item-dots"></span>
-                        </div>
-                        <div class="item-english">Sesame Oil Chicken Rice</div>
-                    </div>
-                    <span class="check-mark">🦕</span>
-                </div>
-
-                <div class="menu-item" data-item="焗烤白魚飯">
-                    <span class="item-number">04</span>
-                    <div class="item-content">
-                        <div class="item-header">
-                            <span class="item-name">焗烤白魚飯</span>
-                            <span class="item-dots"></span>
-                        </div>
-                        <div class="item-english">Baked White Fish with Rice</div>
-                    </div>
-                    <span class="check-mark">🦕</span>
-                </div>
-
-                <div class="menu-item" data-item="焗烤雞肉飯">
-                    <span class="item-number">05</span>
-                    <div class="item-content">
-                        <div class="item-header">
-                            <span class="item-name">焗烤雞肉飯</span>
-                            <span class="item-dots"></span>
-                        </div>
-                        <div class="item-english">Baked Chicken Rice au Gratin</div>
-                    </div>
-                    <span class="check-mark">🦕</span>
-                </div>
-            </div>
-
-            <div class="section-title">— Seafood · 海鮮 —</div>
-
-            <div class="menu-items">
-                <div class="menu-item" data-item="炙烤三文魚">
-                    <span class="item-number">06</span>
-                    <div class="item-content">
-                        <div class="item-header">
-                            <span class="item-name">炙烤三文魚</span>
-                            <span class="item-dots"></span>
-                        </div>
-                        <div class="item-english">Seared Salmon</div>
-                    </div>
-                    <span class="check-mark">🦕</span>
+            <div class="menu-items" id="menuItemsContainer">
+                <div class="no-orders">
+                    <div class="no-orders-icon">🍳</div>
+                    <p>載入菜單中...</p>
                 </div>
             </div>
 
@@ -984,6 +1081,14 @@
                 </div>
             </div>
 
+            <!-- Ingredient Urgency Section -->
+            <div class="chat-section">
+                <div class="section-title">— 食材狀態 🥬 —</div>
+                <div class="ingredient-list" id="ingredientList">
+                    <p class="no-messages">載入中...</p>
+                </div>
+            </div>
+
             <!-- Chat Section -->
             <div class="chat-section">
                 <div class="section-title">— 留言給顧客 💬 —</div>
@@ -994,6 +1099,62 @@
                     <input type="text" class="chat-input" id="chefChatInput" placeholder="輸入訊息...">
                     <button class="chat-send-btn" onclick="sendMessage('chef')">送出</button>
                 </div>
+            </div>
+
+            <button class="btn btn-secondary" onclick="signOut()">
+                登出
+            </button>
+
+            <footer>
+                <p class="footer-text">用滿滿的愛為你準備 <span class="footer-dino">🦖</span></p>
+            </footer>
+        </div>
+
+        <!-- Screen 5: Recipe Management -->
+        <div id="managerScreen" class="screen">
+            <header>
+                <div class="ornament">🦕 ✦ 🦖</div>
+                <h1>小恐龍廚房</h1>
+                <p class="subtitle">食譜管理</p>
+            </header>
+
+            <div class="user-info" id="managerUserInfo"></div>
+
+            <div class="divider">
+                <span class="divider-line"></span>
+                <span class="divider-icon">❀</span>
+                <span class="divider-line"></span>
+            </div>
+
+            <div class="section-title">— 新增食譜 —</div>
+
+            <div class="form-group">
+                <label>菜名 (中文)</label>
+                <input type="text" id="recipeName" placeholder="例：青醬義大利麵">
+            </div>
+
+            <div class="form-group">
+                <label>English Name</label>
+                <input type="text" id="recipeEnglish" placeholder="e.g. Pesto Pasta">
+            </div>
+
+            <div class="form-group">
+                <label>食材 (用逗號分隔)</label>
+                <input type="text" id="recipeIngredients" placeholder="例：義大利麵, 青醬, 起司">
+            </div>
+
+            <button class="btn" onclick="addRecipe()">新增食譜 ➕</button>
+
+            <div class="divider">
+                <span class="divider-line"></span>
+                <span class="divider-icon">❀</span>
+                <span class="divider-line"></span>
+            </div>
+
+            <div class="section-title">— 現有食譜 —</div>
+
+            <div id="recipesList">
+                <p class="no-messages">載入中...</p>
             </div>
 
             <button class="btn btn-secondary" onclick="signOut()">
@@ -1046,17 +1207,21 @@
         let currentRole = null;
         let currentUser = null;
         let selectedItems = [];
+        let recipes = [];
+        let ingredientUrgency = {};
         let unsubscribeOrders = null;
         let unsubscribeChat = null;
+        let unsubscribeRecipes = null;
+        let unsubscribeUrgency = null;
 
         // DOM elements
         const screens = {
             role: document.getElementById('roleScreen'),
             login: document.getElementById('loginScreen'),
             customer: document.getElementById('customerScreen'),
-            chef: document.getElementById('chefScreen')
+            chef: document.getElementById('chefScreen'),
+            manager: document.getElementById('managerScreen')
         };
-        const menuItems = document.querySelectorAll('.menu-item');
         const orderBtn = document.getElementById('orderBtn');
         const modal = document.getElementById('modal');
         const closeModal = document.getElementById('closeModal');
@@ -1064,6 +1229,9 @@
         const notes = document.getElementById('notes');
         const dinosContainer = document.getElementById('dinosContainer');
         const ordersList = document.getElementById('ordersList');
+        const menuItemsContainer = document.getElementById('menuItemsContainer');
+        const recipesList = document.getElementById('recipesList');
+        const ingredientList = document.getElementById('ingredientList');
 
         // Hearts animation
         const hearts = ['💚', '💕', '❤️', '💗', '🤍'];
@@ -1088,16 +1256,34 @@
         function selectRole(role) {
             currentRole = role;
             if (currentUser) {
-                showScreen(role === 'customer' ? 'customer' : 'chef');
-                if (role === 'chef') {
-                    listenToOrders();
-                }
-                listenToChat();
+                navigateToRoleScreen(role);
             } else {
-                document.getElementById('loginSubtitle').textContent =
-                    role === 'customer' ? '點餐登入' : '廚師登入';
+                const subtitles = {
+                    customer: '點餐登入',
+                    chef: '廚師登入',
+                    manager: '管理員登入'
+                };
+                document.getElementById('loginSubtitle').textContent = subtitles[role];
                 showScreen('login');
             }
+        }
+
+        function navigateToRoleScreen(role) {
+            updateUserInfo();
+            if (role === 'customer') {
+                showScreen('customer');
+                listenToRecipes();
+                listenToUrgency();
+            } else if (role === 'chef') {
+                showScreen('chef');
+                listenToOrders();
+                listenToRecipes();
+                listenToUrgency();
+            } else if (role === 'manager') {
+                showScreen('manager');
+                listenToRecipes();
+            }
+            listenToChat();
         }
 
         function goBack() {
@@ -1115,14 +1301,10 @@
         }
 
         function signOut() {
-            if (unsubscribeOrders) {
-                unsubscribeOrders();
-                unsubscribeOrders = null;
-            }
-            if (unsubscribeChat) {
-                unsubscribeChat();
-                unsubscribeChat = null;
-            }
+            [unsubscribeOrders, unsubscribeChat, unsubscribeRecipes, unsubscribeUrgency].forEach(unsub => {
+                if (unsub) unsub();
+            });
+            unsubscribeOrders = unsubscribeChat = unsubscribeRecipes = unsubscribeUrgency = null;
             auth.signOut();
             currentRole = null;
             selectedItems = [];
@@ -1132,12 +1314,7 @@
         auth.onAuthStateChanged(user => {
             currentUser = user;
             if (user && currentRole) {
-                updateUserInfo();
-                showScreen(currentRole === 'customer' ? 'customer' : 'chef');
-                if (currentRole === 'chef') {
-                    listenToOrders();
-                }
-                listenToChat();
+                navigateToRoleScreen(currentRole);
             }
         });
 
@@ -1146,33 +1323,212 @@
                 <img src="${currentUser.photoURL || 'https://via.placeholder.com/32'}" class="user-avatar" alt="avatar">
                 <span class="user-name">${currentUser.displayName || currentUser.email}</span>
             `;
-            document.getElementById('customerUserInfo').innerHTML = html;
-            document.getElementById('chefUserInfo').innerHTML = html;
+            ['customerUserInfo', 'chefUserInfo', 'managerUserInfo'].forEach(id => {
+                document.getElementById(id).innerHTML = html;
+            });
         }
 
-        // Menu item selection
-        menuItems.forEach(item => {
-            item.addEventListener('click', (e) => {
-                item.classList.toggle('selected');
-                const itemName = item.dataset.item;
+        // Recipe management
+        function listenToRecipes() {
+            if (unsubscribeRecipes) return;
 
-                if (item.classList.contains('selected')) {
-                    selectedItems.push(itemName);
-                    for (let i = 0; i < 3; i++) {
-                        setTimeout(() => {
-                            createFloatingHeart(
-                                e.clientX + (Math.random() - 0.5) * 40,
-                                e.clientY
-                            );
-                        }, i * 100);
-                    }
-                } else {
-                    selectedItems = selectedItems.filter(i => i !== itemName);
+            unsubscribeRecipes = db.collection('recipes')
+                .orderBy('createdAt', 'desc')
+                .onSnapshot(snapshot => {
+                    recipes = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+                    renderRecipes();
+                    renderMenuItems();
+                }, error => {
+                    console.error('Error listening to recipes:', error);
+                });
+        }
+
+        function renderRecipes() {
+            if (recipes.length === 0) {
+                recipesList.innerHTML = '<p class="no-messages">還沒有食譜，新增一個吧！</p>';
+                return;
+            }
+
+            recipesList.innerHTML = recipes.map(recipe => `
+                <div class="recipe-card">
+                    <div class="recipe-card-header">
+                        <div>
+                            <div class="recipe-name">${recipe.name}</div>
+                            <div class="recipe-english">${recipe.englishName || ''}</div>
+                        </div>
+                        <div class="recipe-actions">
+                            <button class="btn btn-small btn-danger" onclick="deleteRecipe('${recipe.id}')">刪除</button>
+                        </div>
+                    </div>
+                    <div class="recipe-ingredients">🥬 ${recipe.ingredients?.join(', ') || 'No ingredients'}</div>
+                </div>
+            `).join('');
+        }
+
+        async function addRecipe() {
+            const name = document.getElementById('recipeName').value.trim();
+            const englishName = document.getElementById('recipeEnglish').value.trim();
+            const ingredientsRaw = document.getElementById('recipeIngredients').value.trim();
+
+            if (!name) {
+                alert('請輸入菜名');
+                return;
+            }
+
+            const ingredients = ingredientsRaw.split(/[,，]/).map(i => i.trim()).filter(i => i);
+
+            try {
+                await db.collection('recipes').add({
+                    name,
+                    englishName,
+                    ingredients,
+                    createdAt: firebase.firestore.FieldValue.serverTimestamp()
+                });
+
+                // Clear form
+                document.getElementById('recipeName').value = '';
+                document.getElementById('recipeEnglish').value = '';
+                document.getElementById('recipeIngredients').value = '';
+
+                alert('食譜已新增！');
+            } catch (error) {
+                console.error('Error adding recipe:', error);
+                alert('新增失敗');
+            }
+        }
+
+        async function deleteRecipe(recipeId) {
+            if (!confirm('確定要刪除這個食譜嗎？')) return;
+
+            try {
+                await db.collection('recipes').doc(recipeId).delete();
+            } catch (error) {
+                console.error('Error deleting recipe:', error);
+                alert('刪除失敗');
+            }
+        }
+
+        // Ingredient urgency
+        function listenToUrgency() {
+            if (unsubscribeUrgency) return;
+
+            unsubscribeUrgency = db.collection('settings').doc('ingredientUrgency')
+                .onSnapshot(doc => {
+                    ingredientUrgency = doc.exists ? doc.data() : {};
+                    renderIngredientList();
+                    renderMenuItems();
+                }, error => {
+                    console.error('Error listening to urgency:', error);
+                });
+        }
+
+        function renderIngredientList() {
+            // Get all unique ingredients from recipes
+            const allIngredients = [...new Set(recipes.flatMap(r => r.ingredients || []))];
+
+            if (allIngredients.length === 0) {
+                ingredientList.innerHTML = '<p class="no-messages">還沒有食材（先新增食譜）</p>';
+                return;
+            }
+
+            ingredientList.innerHTML = allIngredients.map(ingredient => {
+                const urgency = ingredientUrgency[ingredient] || 'fresh';
+                return `
+                    <div class="ingredient-item">
+                        <span class="ingredient-name">${ingredient}</span>
+                        <div class="urgency-buttons">
+                            <button class="urgency-btn urgent ${urgency === 'urgent' ? 'active' : ''}"
+                                onclick="setUrgency('${ingredient}', 'urgent')">🔴 今天用</button>
+                            <button class="urgency-btn soon ${urgency === 'soon' ? 'active' : ''}"
+                                onclick="setUrgency('${ingredient}', 'soon')">🟡 快用</button>
+                            <button class="urgency-btn fresh ${urgency === 'fresh' ? 'active' : ''}"
+                                onclick="setUrgency('${ingredient}', 'fresh')">🟢 新鮮</button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        async function setUrgency(ingredient, level) {
+            try {
+                await db.collection('settings').doc('ingredientUrgency').set({
+                    ...ingredientUrgency,
+                    [ingredient]: level
+                }, { merge: true });
+            } catch (error) {
+                console.error('Error setting urgency:', error);
+            }
+        }
+
+        // Menu items (dynamic)
+        function renderMenuItems() {
+            if (recipes.length === 0) {
+                menuItemsContainer.innerHTML = `
+                    <div class="no-orders">
+                        <div class="no-orders-icon">🍳</div>
+                        <p>還沒有菜單</p>
+                        <p style="font-size: 12px; margin-top: 5px;">請先在「管理食譜」新增</p>
+                    </div>
+                `;
+                return;
+            }
+
+            menuItemsContainer.innerHTML = recipes.map((recipe, index) => {
+                // Check if any ingredient is urgent
+                const urgentIngredient = recipe.ingredients?.find(i => ingredientUrgency[i] === 'urgent');
+                const soonIngredient = recipe.ingredients?.find(i => ingredientUrgency[i] === 'soon');
+
+                let badge = '';
+                if (urgentIngredient) {
+                    badge = `<span class="urgency-badge urgent">今天吃我！</span>`;
+                } else if (soonIngredient) {
+                    badge = `<span class="urgency-badge soon">推薦</span>`;
                 }
 
-                updateOrderButton();
+                return `
+                    <div class="menu-item" data-item="${recipe.name}" data-id="${recipe.id}">
+                        <span class="item-number">${String(index + 1).padStart(2, '0')}</span>
+                        <div class="item-content">
+                            <div class="item-header">
+                                <span class="item-name">${recipe.name}</span>
+                                ${badge}
+                                <span class="item-dots"></span>
+                            </div>
+                            <div class="item-english">${recipe.englishName || ''}</div>
+                            <div class="item-ingredients">🥬 ${recipe.ingredients?.join(', ') || ''}</div>
+                        </div>
+                        <span class="check-mark">🦕</span>
+                    </div>
+                `;
+            }).join('');
+
+            // Re-attach click listeners
+            document.querySelectorAll('.menu-item').forEach(item => {
+                item.addEventListener('click', handleMenuItemClick);
             });
-        });
+        }
+
+        function handleMenuItemClick(e) {
+            const item = e.currentTarget;
+            item.classList.toggle('selected');
+            const itemName = item.dataset.item;
+
+            if (item.classList.contains('selected')) {
+                selectedItems.push(itemName);
+                for (let i = 0; i < 3; i++) {
+                    setTimeout(() => {
+                        createFloatingHeart(
+                            e.clientX + (Math.random() - 0.5) * 40,
+                            e.clientY
+                        );
+                    }, i * 100);
+                }
+            } else {
+                selectedItems = selectedItems.filter(i => i !== itemName);
+            }
+
+            updateOrderButton();
+        }
 
         function updateOrderButton() {
             if (selectedItems.length > 0) {
@@ -1189,7 +1545,6 @@
             if (selectedItems.length === 0 || !currentUser) return;
 
             try {
-                // Save to Firebase
                 await db.collection('orders').add({
                     items: selectedItems,
                     notes: notes.value.trim() || '',
@@ -1199,7 +1554,6 @@
                     createdAt: firebase.firestore.FieldValue.serverTimestamp()
                 });
 
-                // Show confirmation
                 let summaryHTML = selectedItems.map(item =>
                     `<div class="order-summary-item">🌿 ${item}</div>`
                 ).join('');
@@ -1211,7 +1565,6 @@
                 orderSummary.innerHTML = summaryHTML;
                 modal.classList.add('active');
 
-                // Celebration hearts
                 for (let i = 0; i < 15; i++) {
                     setTimeout(() => {
                         createFloatingHeart(
@@ -1229,7 +1582,7 @@
 
         closeModal.addEventListener('click', () => {
             modal.classList.remove('active');
-            menuItems.forEach(item => item.classList.remove('selected'));
+            document.querySelectorAll('.menu-item').forEach(item => item.classList.remove('selected'));
             selectedItems = [];
             notes.value = '';
             updateOrderButton();
@@ -1339,7 +1692,6 @@
             customerChat.innerHTML = messagesHTML;
             chefChat.innerHTML = messagesHTML;
 
-            // Scroll to bottom
             customerChat.scrollTop = customerChat.scrollHeight;
             chefChat.scrollTop = chefChat.scrollHeight;
         }
